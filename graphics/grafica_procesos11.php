@@ -1,0 +1,138 @@
+<?php
+
+session_start();
+error_reporting(0);
+
+$id = $_SESSION["id"];
+$url_base = $_SESSION["url_base"];
+
+if(!isset($id)){
+	
+	header("Location:" . $url_base . "login.php");
+	
+	die();
+	
+}
+
+include "../conexion.php";
+
+$arreglo = array();
+$inicio = $_POST["anio"] . "-01-01";
+$turno = $_POST["turno"];
+$vehiculo = $_POST["vehiculo"];
+$carga = $_POST["carga"];
+$criterios = "";
+
+if($turno != ""){ $criterios .= " AND f.turno='$turno'"; }
+if($vehiculo != ""){ $criterios .= " AND f.vehiculo='$vehiculo'"; }
+if($carga != ""){ $criterios .= " AND f.carga='$carga'"; }
+
+
+$hoy = date("Y-m-d");
+$meses = ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
+
+$instaladaCargue = 24.17*6.5*4*3;
+$instaladaDescargue = 24.17*6.5*4*3;
+
+for($i = 0; $i <= count($meses); $i++){
+
+	$m = $i ? 1 : 0;
+	$inicio = date("Y-m-d", strtotime($inicio . "+" . $m . " months"));
+	$fin = date("Y-m-d", strtotime($inicio . "+1 months"));
+	$fin = date("Y-m-d", strtotime($fin . "-1 days"));
+	$mes = $meses[date("n",strtotime($inicio))-1];
+
+	if($inicio <= $hoy){
+
+		$sumaCargue = 0;
+		$toneladasCargue = 0;
+		$cuentaCargue = 0;
+		$productividadCargue = 0;
+		$operariosCargue = 0;
+		
+		$sumaDescargue = 0;
+		$toneladasDescargue = 0;
+		$cuentaDescargue = 0;
+		$productividadDescargue = 0;
+		$operariosDescargue = 0;
+
+		$sql = "SELECT f.e1, f.e2, f.e3, f.e4, f.operario1, f.operario2, f.operario3, f.atencion, f.toneladas, f.cajas
+				FROM procesos AS f
+				WHERE f.sw=1 AND f.estado='SALIDA DE MUELLE' AND f.registro between '$inicio' AND '$fin' $criterios";
+		$resultado = $conexion->query($sql);
+
+		if($resultado == true){
+
+			while($fila = $resultado->fetch_array()){
+
+				$e1 = $fila[0];
+				$e2 = $fila[1];
+				$e3 = $fila[2];
+				$e4 = $fila[3];
+				$operario1 = $fila[4];
+				$operario2 = $fila[5];
+				$operario3 = $fila[6];
+				$atencion = $fila[7];
+				$toneladas = $fila[8];
+				$cajas = $fila[9];
+
+				//MINUTOS
+				$start_date = new DateTime($e2);
+				$since_start = $start_date->diff(new DateTime($e3));
+				$horas = $since_start->h;
+				$minutos =  $since_start->i;
+				$tiempo = $horas*60 + $minutos;		
+
+				//OPERARIOS
+				$operarios = 0;
+
+				if($operario1 != ""){ $operarios++; }
+				if($operario2 != ""){ $operarios++; }
+				if($operario3 != ""){ $operarios++; }
+
+				//ATENCIÓN
+				if($atencion == "CARGUE"){
+
+					$sumaCargue += $tiempo;
+					$toneladasCargue += $toneladas;
+					$cuentaCargue++;
+					$operariosCargue += $operarios;
+
+				}
+
+				if($atencion == "DESCARGUE"){
+
+					$sumaDescargue += $tiempo;
+					$toneladasDescargue += $toneladas;
+					$cuentaDescargue++;
+					$operariosDescargue += $operarios;
+
+				}
+			}
+		}
+
+		if($cuentaCargue > 0){ 
+			
+			$productividadCargue = round(($toneladasCargue/1000)/($sumaCargue/60),2);
+		
+		}
+
+		if($cuentaDescargue > 0){ 
+			
+			$productividadDescargue = round(($toneladasDescargue/1000)/($sumaDescargue/60),2);
+		
+		}
+		
+		$arreglo[] = array("mes"=>$mes,
+						   "cargue"=>$productividadCargue,
+						   "descargue"=>$productividadDescargue);
+		
+	}
+}
+
+echo json_encode($arreglo);
+
+$resultado->free();
+$conexion->close();
+
+?>
