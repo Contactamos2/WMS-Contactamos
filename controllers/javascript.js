@@ -62,7 +62,7 @@ $(document).ready(function() {
 		$("#seccion").load("views/procesos.php");
 		$("#seccion").show(); 
 		return false;		
-    });		
+    });	
     $(".aADI").on("click", function() {
 		console.log("click");
 		$("#seccion").load("views/auditoria.php");

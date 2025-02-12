@@ -22,20 +22,20 @@ if($consulta == ""){
 	
 	$sql = "SELECT f.id_auditoria, f.fecha_auditoria, r.nombre_responsable AS responsable, ag.nombre_agente AS agente, z.No_zona AS zona, f.No_transporte,
 		f.placa, f.faltante, f.sobrante, f.cruce, f.averia, f.tab_121, f.tab_402, f.tab_405, f.tab_401, mat.codigo_material, mat.descripcion, 
-		mat.cantidad, mat.valor_total, mat.No_serial_contenedor, f.tipo_contenedor, f.tipo_canastilla, f.tipo_masivo, f.novedad_nutresa, 
+		f.cantidad, f.valor_total, f.No_serial_contenedor, f.tipo_contenedor, f.tipo_canastilla, f.tipo_masivo, f.novedad_nutresa, 
 		f.novedad_contactamos, ver.nombre_verificador AS verificador, f.observaciones, f.url_drive
 		     FROM auditoria AS f, responsable AS r, zona AS z, agente AS ag,verificador 
 		AS ver, materiales AS mat WHERE f.id_responsable = r.id_responsable AND f.id_zona = z.id_zona AND f.id_agente = ag.id_agente AND f.id_verificador = 
-		ver.id_verificador AND f.id_materiales = mat.id_materiales";
+		ver.id_verificador AND f.id_material = mat.id_material";
 	
 } else{
 	$sql = "SELECT f.id_auditoria, f.fecha_auditoria, r.nombre_responsable AS responsable, ag.nombre_agente AS agente, z.No_zona AS zona, f.No_transporte,
 		f.placa, f.faltante, f.sobrante, f.cruce, f.averia, f.tab_121, f.tab_402, f.tab_405, f.tab_401, mat.codigo_material, mat.descripcion, 
-		mat.cantidad, mat.valor_total, mat.No_serial_contenedor, f.tipo_contenedor, f.tipo_canastilla, f.tipo_masivo, f.novedad_nutresa, 
+		f.cantidad, f.valor_total, f.No_serial_contenedor, f.tipo_contenedor, f.tipo_canastilla, f.tipo_masivo, f.novedad_nutresa, 
 		f.novedad_contactamos, ver.nombre_verificador AS verificador, f.observaciones, f.url_drive
 		     FROM auditoria AS f, responsable AS r, zona AS z, agente AS ag,verificador 
 		AS ver, materiales AS mat WHERE f.id_responsable = r.id_responsable AND f.id_zona = z.id_zona AND f.id_agente = ag.id_agente AND f.id_verificador = 
-		ver.id_verificador AND f.id_materiales = mat.id_materiales
+		ver.id_verificador AND f.id_material = mat.id_material
 			AND (
 				POSITION('$consulta' IN f.fecha_auditoria) OR
 				POSITION('$consulta' IN r.nombre_responsable) OR
@@ -68,8 +68,6 @@ if($consulta == ""){
 }
 
 $resultado = $conexion->query($sql);
-// $fila = $resultado->fetch_array();
-// var_dump($fila);
 
 $conteo = 0;
 
@@ -161,11 +159,7 @@ $conexion->close();
 
 
 
-
-
-
-
-
+	
 
 
 

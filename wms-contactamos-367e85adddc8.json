@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "wms-contactamos",
+  "private_key_id": "367e85adddc800b2d042fe3436a1ba3433d37c52",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDpDbrOPsQfn7q0\n5KMRBmZShKlfj+vwEZ9lfxR109InmRT4deZZ5kU3w9BzAE7ENTd8X0hAQQv1Ra5u\nObPRiV60zIKgsmuNXGJgDrncwATh+xo5WTiWpEg728uZDUU+v2p7DQVf6/BFwrHm\noAg83syvVzg5qhSaQjXcjHRibf+RSdQBINQAg/LIcdtQO53qYqCvVQlUY9BIG1dx\n8IEaIFUTDvdE+1aX9nFaZR6hLc2AaQZ48xEuELHvRIm1Zo8PnEuKsYt6PrD8o6hI\nQP5LpAO2Oag9a7q3En2VElR8AAuag+xybbNndo1GETLX4PrgKgnKpj1qY0bAiXZm\npaklUryzAgMBAAECggEAGdxh1U8WY6Ki4j3YxnkyU4fQZP/1y3ROfsHE8HTqhhBb\nnl00NtecPgg8PPaqHDsCMYqVMY7GQpen4n1ZXIVk0qU6/ZVZj/HSIhygN+8VhkoJ\n6paMS/27h5Y9Qno8K9lWednDtera2l2KG4W4maCTkAVwAh4Yc9b9s7/g46dBy8pH\nlWP4cMvENqI07HDh3kScVIosC7SOKB7HlwMaD7NNnrxTG63LAAAFcGJgLVYrL053\netmwyMlJX+QplsK2cqytjh+U77bWoXQe72wDj0EDpH4I2tNzRMIBh+CVOASFErU3\nsfwIYxCwMEiEOmbt30VffRdCPIr65Eh1wPJaWbJ1KQKBgQD8JNMv+WKv0JaA2xm/\nB+4LUQHC1CLNY6inq0arWixfFmPY+JP1ofW+NpHIRocuElW0HY/DTcCrfzSITKI4\nz9d1BQwYF1l6p6EsVuBInsqQyV/9y7pn0MCEOaC2SpCq6nqqZK7gGZEU9i21CAdd\nyq6HdFYYeXWmGe94NkqaRuNUtQKBgQDsnioFuKtYu3uGn/fXJYiLnLt51GaKmG0E\ngKtemSvNpOx7aEmG8HmsWuxMlv+MQ29M0bINT5VVAIwlTmDcV86vuY1z4WU9vNcy\nEfb8vQioiBcduTlUNOGWcab4CtzsPlLi31LcHPCJs+tb0kwCmWMZZUtkasoj9NTN\nYn2+tl7UxwKBgQCCgoUVdd4Q5sSgGchvyqj6Don80FTbPtRTRSIlG12QMkSoT7I2\nGAjc1d4LbgYWYMMfoZWCH8K0gfks+42UHnCFT4F9Dsjv5chU7PrWW+q5mqIm+caY\nacLcLf/zmxDahtfLTqX9tP4VfX8XDvrRH1HLJvpRXLz6pr3+2QswY7TTaQKBgHqt\n6oW64IQJ+JqtN/fBixEvuvgIiv3S17sc5z0N12sw1jeJs42WAs+8+IUhSO+1SvCe\nTF2gZIGE3iS9hXTYxd3QK6noM/CVh1F7hP43GFUg8jNEBJhHLqss0/AI2dBW4+yi\n8zgSfRg4Q5AA8c3rLzlMjpFK2PFZkDfIl/+YWISjAoGAaN5GJVWS+MStlemRW2iq\nDQoQrst1AYQXATqZBfPUB9Nk3cdsLcTzhtRNHWYfjSfTZAzpdjxKaoeKqwceJVjM\nqK0F2SQZeUb2zRMOkVlEut36hQeyhVxCCdS4KeAcS97AINL6daQzgcpCA2xi2X/F\nlbHjvPa7v7/Frp19J2ZR5Ns=\n-----END PRIVATE KEY-----\n",
+  "client_email": "prueba-wms-contactamos@wms-contactamos.iam.gserviceaccount.com",
+  "client_id": "100818800543077855386",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/prueba-wms-contactamos%40wms-contactamos.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

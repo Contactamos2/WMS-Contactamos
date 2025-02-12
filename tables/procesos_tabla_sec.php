@@ -29,7 +29,6 @@ if($consulta == ""){
 			WHERE f.sw=1 AND f.lider=l.id AND f.turno=t.id AND f.muelle=b.muelle AND f.vehiculo=v.id AND f.procedencia=p.id AND f.destino=d.id AND f.canal=c.id
 			ORDER BY f.registro DESC, t.turno DESC, f.e1 DESC LIMIT $limite OFFSET $offset";
 	
-	var_dump($consulta);
 } else{
 	
 	$sql = "SELECT f.id, f.estado, f.registro, l.nick, t.turno, b.muelle, v.vehiculo, c.canal, p.procedencia, d.destino, f.tras_rem, f.transporteS, f.e1, f.e2, f.e3, f.e4, f.toneladas, f.observaciones, f.atencion, f.placa, f.carga, f.estibas, f.operario1, f.operario2, f.operario3, f.cajas
